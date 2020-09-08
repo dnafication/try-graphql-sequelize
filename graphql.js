@@ -17,9 +17,6 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     dob: String
-    age(in: AgeType): Int
-    slug: String
-    ageInString: String
     tasks: [Task]
   }
 
@@ -29,7 +26,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    user(firstName: String, slug: String): User
+    user(firstName: String): User
   }
 `;
 
@@ -52,30 +49,11 @@ const resolvers = {
         return findOptions;
       },
       after: (result, args, context) => {
-        console.log("result", result);
-        console.log("args", args);
-        const age = moment().diff(moment(result.dob), "years");
-        const ageInString = numToWords.toWordsOrdinal(age);
-        return Object.assign({ ageInString }, result.toJSON());
+        return result;
       },
     }),
   },
   User: {
-    age: (parent, args, context) => {
-      if (!parent.dob) {
-        return 0;
-      }
-      if (!args.in) {
-        args.in = "YEARS";
-      }
-      return moment().diff(moment(parent.dob), args.in.toLowerCase());
-    },
-    dob: (parent) => {
-      if (!parent.dob) {
-        return "Not Set";
-      }
-      return moment(parent.dob).format("YYYY-MM-DD");
-    },
     tasks: resolver(User.Tasks),
   },
 };
