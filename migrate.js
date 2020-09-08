@@ -26,6 +26,7 @@ const migrate = async () => {
   // get the first user
   const user = await User.findOne({ where: { id: 1 }, include: User.Tasks });
   console.log("user including tasks", user.toJSON());
+  console.log("-------------------------------");
 };
 
 module.exports = migrate;

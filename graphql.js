@@ -52,11 +52,9 @@ const resolvers = {
         return findOptions;
       },
       after: (result, args, context) => {
-        console.log("result", result);
-        console.log("args", args);
         const age = moment().diff(moment(result.dob), "years");
         const ageInString = numToWords.toWordsOrdinal(age);
-        return Object.assign({ ageInString }, result.toJSON());
+        return Object.assign(result, { ageInString });
       },
     }),
   },
