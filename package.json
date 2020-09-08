@@ -1,0 +1,29 @@
+{
+  "name": "try-graphql-sequelize",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon graphql.js"
+  },
+  "keywords": [],
+  "author": "Dina Basumatary",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.17.0",
+    "dataloader-sequelize": "^2.3.0",
+    "graphql": "^15.0.0",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-relay": "^0.6.0",
+    "graphql-sequelize": "^9.4.0",
+    "moment": "^2.25.3",
+    "number-to-words": "^1.2.4",
+    "sequelize": "^6.3.5",
+    "slug": "^3.3.2",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
